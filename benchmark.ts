@@ -1,5 +1,25 @@
 import axios from 'axios';
 
+let lockCount = 0;
+let lockStartTime = 0;
+
+function checkLock() {
+    lockCount -= 1;
+    if (lockCount === 0) {
+        console.log('total time lock take: ', Date.now() - lockStartTime);
+    }
+}
+
+let transactionCount = 0;
+let transactionStartTime = 0;
+
+function checkTransaction() {
+    transactionCount -= 1;
+    if (transactionCount === 0) {
+        console.log('total time transaction take: ', Date.now() - transactionStartTime);
+    }
+}
+
 async function putDataLock() {
     const url = 'http://localhost:8181/admin/achievement/9/lock_update'; // Replace with your API endpoint
     const data = {
@@ -12,6 +32,8 @@ async function putDataLock() {
         console.log('Response:', response.data);
     } catch (error) {
         console.error('Error:', error);
+    } finally {
+        checkLock();
     }
 }
 
@@ -22,6 +44,8 @@ async function readDataLock() {
         console.log('Response:', response.data);
     } catch (error) {
         console.error('Error:', error);
+    } finally {
+        checkLock();
     }
 }
 
@@ -37,6 +61,8 @@ async function putDataTransaction() {
         console.log('Response:', response.data);
     } catch (error) {
         console.error('Error:', error);
+    } finally {
+        checkTransaction();
     }
 }
 
@@ -48,6 +74,8 @@ async function readData() {
         console.log('Response:', response.data);
     } catch (error) {
         console.error('Error:', error);
+    } finally {
+        checkTransaction();
     }
 }
 
@@ -65,11 +93,24 @@ async function execute_transaction_flow(loop: number, readPercentage: number) {
 
 async function benchmark(loop: number, readPercentage: number) {
 
-
+    lockCount = loop;
+    lockStartTime = Date.now();
     for (let i = 0; i < loop; i+= 1) {
         const random: number = Math.random();
         if (random < readPercentage) {
             readDataLock();
+        } else {
+            putDataLock();
+        }
+    }
+
+
+    transactionCount = loop;
+    transactionStartTime = Date.now();
+    for (let i = 0; i < loop; i+= 1) {
+        const random: number = Math.random();
+        if (random < readPercentage) {
+            readData();
         } else {
             putDataTransaction();
         }
@@ -79,6 +120,6 @@ async function benchmark(loop: number, readPercentage: number) {
 // Call the function to execute the POST request
 (
     async () => {
-        await benchmark(10, 0.2);
+        await benchmark(10, 0.999999);
     }
 )();

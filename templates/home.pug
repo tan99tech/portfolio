@@ -1,4 +1,125 @@
 html
-  body
-    ul
-      = "test"
+  head
+    title Tan Truong Portfolio
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='./public/css/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+
+  body(oncontextmenu='return false' style='height: 100%')
+
+    //- pre loader
+    //- .loader-container
+    //-   img(draggable='false' src='./public/images/preloader.gif' alt='')
+
+    //- navbar starts
+    header
+      a.logo(href='/')
+        i.fab.fa-node-js
+        |  Tan
+      div#menu.fas.fa-bars
+      nav.navbar
+        ul
+          li
+            a.active(href='#home') Home
+          li
+            a(href='#about') About
+          li
+            a(href='#achievement') Achievement
+
+    //- hero section starts
+    section.home(id='home')
+      div#particles-js
+        canvas.particles-js-canvas-el(width='1898' height='1928' style='width: 100%; height: 100%')
+
+      div.content
+        h2 Hi There,
+          br
+          | I'm Tan 
+          span Truong
+        p(data-sr-id='0' style='visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;')
+          | i am into 
+          span.typing-text
+          span.typed-cursor(style='animation-iteration-count: 0;')
+
+        a.btn(href='#about' data-sr-id='2' style='visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.5s ease 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;')
+          span About Me
+          i.fas.fa-arrow-circle-down
+        div.socials
+          ul.social-icons
+            li
+              a.linkedin(aria-label='LinkedIn' href='https://www.linkedin.com/in/tan-truong-09a159225/' target='_blank' data-sr-id='5' style='visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;')
+                i.fab.fa-linkedin
+            li
+              a.instagram(aria-label='Facebook' href='https://www.facebook.com/profile.php?id=100021356473473' data-sr-id='13' style='visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;')
+                i.fab.fa-instagram(target='_blank')
+
+      div.image(data-sr-id='3' style='visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.4s;')
+        img(draggable='false' class='tilt' src='./public/images/hero.png' alt='' style='transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);')
+
+    //- about section starts
+    section.about#about
+      h2.heading
+        i.fas.fa-user-alt
+        |  About 
+        span Me
+
+      .row
+        .image
+          img.tilt(src="./public/images/profile2.png", alt="", style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);")
+
+        .content
+          h3(data-sr-id="16", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+            |  I'm Tan Truong
+
+          span.tag(data-sr-id="17", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+            |  Backend web developer
+
+          p(data-sr-id="18", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+            |  1.5 years of experience building microservice applications.
+            br
+            |  Strong problem solving skill.
+            br
+            |  Love exploring about the cloud services & database services.
+            br
+            |  Passionate about optimizing system performance.
+
+          .box-container(data-sr-id="21", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+
+            .box
+              p(data-sr-id="19", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+                span  email :
+                |   truongtranduytan@gmail.com
+              p(data-sr-id="20", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+                span  Address :
+                |   Saigon, Vietnam
+
+          .resumebtn(data-sr-id="22", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.2s linear 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;")
+            a.btn(href="https://drive.google.com/file/d/1gHq39Bss3Sa6jXuRX2fjnd11OPVLgDc4/view", target="_blank")
+              span  Resume
+              i.fas.fa-chevron-right
+
+    section.achievement#achievement
+      h1.heading
+        i.fas.fa-graduation-cap
+        |  My 
+        span Achievement
+
+      p.qoute
+        | Great achievement always requires great sacrifice.
+
+      .box-container
+        each achievement in achievements
+          .box(data-sr-id="26", style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all 0.3s ease 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;")
+            .image
+              img(draggable="false", src=`./${achievement.imagePath}`, alt="")
+            .content
+              h3= achievement.title
+              p= achievement.description
+              h4= achievement.achievedDate
+
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.12')
+    script(src='./public/js/particles.min.js')
+    script(src='./public/js/app.js')
+    script(src='./public/js/script.js')

@@ -28,8 +28,7 @@ async function putDataLock() {
     };
 
     try {
-        const response = await axios.put(url, data);
-        console.log('Response:', response.data);
+        await axios.put(url, data);
     } catch (error) {
         console.error('Error:', error);
     } finally {
@@ -40,8 +39,7 @@ async function putDataLock() {
 async function readDataLock() {
     const url = 'http://localhost:8181/achievements_lock'; // Replace with your API endpoint
     try {
-        const response = await axios.get(url);
-        console.log('Response:', response.data);
+        await axios.get(url);
     } catch (error) {
         console.error('Error:', error);
     } finally {
@@ -57,8 +55,7 @@ async function putDataTransaction() {
     };
 
     try {
-        const response = await axios.put(url, data);
-        console.log('Response:', response.data);
+        await axios.put(url, data);
     } catch (error) {
         console.error('Error:', error);
     } finally {
@@ -70,8 +67,7 @@ async function putDataTransaction() {
 async function readData() {
     const url = 'http://localhost:8181/achievements'; // Replace with your API endpoint
     try {
-        const response = await axios.get(url);
-        console.log('Response:', response.data);
+        await axios.get(url);
     } catch (error) {
         console.error('Error:', error);
     } finally {
@@ -120,6 +116,6 @@ async function benchmark(loop: number, readPercentage: number) {
 // Call the function to execute the POST request
 (
     async () => {
-        await benchmark(10, 0.999999);
+        await benchmark(100, 0.9);
     }
 )();

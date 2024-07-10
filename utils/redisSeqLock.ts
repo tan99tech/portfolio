@@ -36,7 +36,6 @@ class RedisSeqLock {
     `;
     // Execute the Lua script using eval
     const acquired: boolean = await this.redis.eval(script, 1, this.seqLock) as boolean;
-    // Return true if the result is 1, otherwise false
     return acquired;
   }
 
@@ -46,7 +45,7 @@ class RedisSeqLock {
       if (seqStart % 2 === 1) {
         // Writer is active, retry
         console.log('Reading Locked');
-        await setTimeout(100);
+        await setTimeout(10);
         continue;
       }
 
@@ -64,11 +63,12 @@ class RedisSeqLock {
       const lockAcquired = await this.acquireSeqLock();
       if (lockAcquired) {
         const result = await writeFunction(...params);
+        // await this.redis.incr('thisSeqLock'); // End write
         await this.redis.incr(this.seqLock); // End write
         return result;
       } else {
         console.log('Writing Locked');
-        await setTimeout(100); // Wait and retry if lock is not acquired
+        await setTimeout(10); // Wait and retry if lock is not acquired
       }
     }
   }

@@ -21,7 +21,23 @@ function checkTransaction() {
 }
 
 async function putDataLock() {
-    const url = 'http://localhost:8181/admin/achievement/9/lock_update'; // Replace with your API endpoint
+    const url = 'http://localhost:8181/admin/achievement/1/lock_update'; // Replace with your API endpoint
+    const data = {
+        "title": "Problem Solving Certificate",
+        "description": "Issued by Hackerrank"
+    };
+
+    try {
+        await axios.put(url, data);
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        checkLock();
+    }
+}
+
+async function putAchievementTitleLock() {
+    const url = 'http://localhost:8181/admin/achievement/1/lock_update_title'; // Replace with your API endpoint
     const data = {
         "title": "Problem Solving Certificate",
         "description": "Issued by Hackerrank"
@@ -48,7 +64,23 @@ async function readDataLock() {
 }
 
 async function putDataTransaction() {
-    const url = 'http://localhost:8181/admin/achievement/9/update'; // Replace with your API endpoint
+    const url = 'http://localhost:8181/admin/achievement/1/transaction_update'; // Replace with your API endpoint
+    const data = {
+        "title": "Problem Solving Certificate",
+        "description": "Issued by Hackerrank"
+    };
+
+    try {
+        await axios.put(url, data);
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        checkTransaction();
+    }
+}
+
+async function putAchievementTitleTransaction() {
+    const url = 'http://localhost:8181/admin/achievement/1/transaction_update_title'; // Replace with your API endpoint
     const data = {
         "title": "Problem Solving Certificate",
         "description": "Issued by Hackerrank"
@@ -75,19 +107,21 @@ async function readData() {
     }
 }
 
-async function execute_transaction_flow(loop: number, readPercentage: number) {
-    const totalTime = 0;
+async function benchmarkTransaction(loop: number, readPercentage: number) {
+    transactionCount = loop;
+    transactionStartTime = Date.now();
     for (let i = 0; i < loop; i+= 1) {
         const random: number = Math.random();
         if (random < readPercentage) {
             readData();
         } else {
             putDataTransaction();
+            // putAchievementTitleTransaction();
         }
     }
 }
 
-async function benchmark(loop: number, readPercentage: number) {
+async function benchmarkLock(loop: number, readPercentage: number) {
 
     lockCount = loop;
     lockStartTime = Date.now();
@@ -97,25 +131,14 @@ async function benchmark(loop: number, readPercentage: number) {
             readDataLock();
         } else {
             putDataLock();
-        }
-    }
-
-
-    transactionCount = loop;
-    transactionStartTime = Date.now();
-    for (let i = 0; i < loop; i+= 1) {
-        const random: number = Math.random();
-        if (random < readPercentage) {
-            readData();
-        } else {
-            putDataTransaction();
+            // putAchievementTitleLock();
         }
     }
 }
-
 // Call the function to execute the POST request
 (
     async () => {
-        await benchmark(100, 0.9);
+        // await benchmarkTransaction(100, 0);
+        await benchmarkLock(100, 0);
     }
 )();

@@ -10,11 +10,11 @@
 
 ```bash
   CREATE TABLE achievement (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255),
-    achievedDate DATE,
-    imagePath VARCHAR(255)
+    "achievedDate" DATE,
+    "imagePath" VARCHAR(255)
   );
 ```
 
@@ -32,3 +32,11 @@
 ```
 
 - To test API, use postman
+
+## **Conclusion**
+
+- Use sequence lock and transaction for different purpose of 
+
+## **Explanation**
+
+- PostgreSQL 

@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "./sequelize";
+import { sequelize } from "./sequelize";
 
 class Achievement extends Model {
   // we have to declare the members
@@ -31,4 +31,6 @@ Achievement.init({
 	timestamps: false,
 });
 
-export default Achievement;
+export {
+  Achievement,
+}

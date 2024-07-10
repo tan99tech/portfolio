@@ -2,11 +2,11 @@
 
 ## **Prerequisites**
 
-- You have Redis server and MySQL server (root account doesn't have) installed in your local machine.
+- You have Redis server and PostgreSQL server installed in your local machine.
 
 ## **Set up steps**
 
-- Connect to your MySQL and run command on your `tutorial_sequelize` schema:
+- Connect to your MySQL and run command on your `tutorial_sequelize` database:
 
 ```bash
   CREATE TABLE achievement (

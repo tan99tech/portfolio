@@ -8,4 +8,6 @@ const redisClient = new Redis({
   // logging: false,
 });
 
-export default redisClient;
+export {
+  redisClient,
+};

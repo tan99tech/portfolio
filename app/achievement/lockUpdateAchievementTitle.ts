@@ -1,10 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { Achievement } from "../../../models";
+import { RedisSeqLock, redisClient } from "../utils";
+import { Achievement } from "../../models";
 
-import RedisSeqLock from "../../../utils/redisSeqLock";
-import redisClient from "../../../utils/redis";
-
-const lockUpdateAchievement = async (req: Request, res: Response, next: NextFunction) => {
+const lockUpdateAchievementTitle = async (req: Request, res: Response, next: NextFunction) => {
   const id = parseInt(req.params.achievement_id);
   const redisSeqLock = new RedisSeqLock(redisClient);
 
@@ -13,8 +11,7 @@ const lockUpdateAchievement = async (req: Request, res: Response, next: NextFunc
       let achievement = await Achievement.findByPk(id);
       if (achievement !== null) {
         return await achievement.update({
-          title: req.body.title as string,
-          description: req.body.description as string,
+          title: `${achievement.title}a`,
         });
       } else {
         return {};
@@ -25,4 +22,6 @@ const lockUpdateAchievement = async (req: Request, res: Response, next: NextFunc
   res.send(updated_achievement);
 }
 
-export default lockUpdateAchievement;
+export {
+  lockUpdateAchievementTitle,
+};

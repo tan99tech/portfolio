@@ -1,6 +1,6 @@
 import fs from "fs";
 import { Request, Response, NextFunction } from "express";
-import { Achievement } from "../../../models";
+import { Achievement } from "../../models";
 
 const deleteAchievement = async (req: Request, res: Response, next: NextFunction) => {
   const id: number = parseInt(req.params.achievement_id);
@@ -18,4 +18,6 @@ const deleteAchievement = async (req: Request, res: Response, next: NextFunction
   res.send(`delete successful ID: ${id}`);
 };
 
-export default deleteAchievement;
+export {
+  deleteAchievement,
+};

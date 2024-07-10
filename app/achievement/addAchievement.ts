@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Achievement } from "../../../models";
+import { Achievement } from "../../models";
 
 const addAchievement = async (req: Request, res: Response, next: NextFunction) => {
   const { file, body: {title, description, achievedDate} } = req;
@@ -9,4 +9,6 @@ const addAchievement = async (req: Request, res: Response, next: NextFunction) =
   res.send(achievement);
 };
 
-export default addAchievement;
+export {
+  addAchievement,
+};

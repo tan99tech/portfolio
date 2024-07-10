@@ -74,4 +74,6 @@ class RedisSeqLock {
   }
 }
 
-export default RedisSeqLock
+export {
+  RedisSeqLock,
+};

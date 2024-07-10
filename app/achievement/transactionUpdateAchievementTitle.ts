@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Achievement, sequelize } from "../../../models";
+import { Achievement, sequelize } from "../../models";
 
 const transactionUpdateAchievementTitle = async (req: Request, res: Response, next: NextFunction) => {
   const id = parseInt(req.params.achievement_id);
@@ -24,4 +24,6 @@ const transactionUpdateAchievementTitle = async (req: Request, res: Response, ne
   }
 };
 
-export default transactionUpdateAchievementTitle;
+export {
+  transactionUpdateAchievementTitle,
+};

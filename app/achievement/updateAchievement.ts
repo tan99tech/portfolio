@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Achievement } from "../../../models";
+import { Achievement } from "../../models";
 
 const updateAchievement = async (req: Request, res: Response, next: NextFunction) => {
   const id = parseInt(req.params.achievement_id);
@@ -13,4 +13,6 @@ const updateAchievement = async (req: Request, res: Response, next: NextFunction
   res.send(achievement);
 };
 
-export default updateAchievement;
+export {
+  updateAchievement,
+};
